@@ -29,6 +29,7 @@ public class JPresent<V extends IView> implements IPresent<V> {
         if (v == null || v.get() == null) {
             Log.e(TAG, "v can not be null视图已销毁,注意内存泄漏");
 //            throw new IllegalStateException("v can not be null");
+            return null;
         }
         return v.get();
     }
