@@ -1,5 +1,7 @@
 package com.juyao.jmvp.mvp;
 
+import android.util.Log;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -7,6 +9,7 @@ import java.lang.ref.WeakReference;
  */
 
 public class JPresent<V extends IView> implements IPresent<V> {
+    String TAG = "JPresent";
     private WeakReference<V> v;
 
     @Override
@@ -24,7 +27,8 @@ public class JPresent<V extends IView> implements IPresent<V> {
 
     protected V getV() {
         if (v == null || v.get() == null) {
-            throw new IllegalStateException("v can not be null");
+            Log.e(TAG, "v can not be null视图已销毁,注意内存泄漏");
+//            throw new IllegalStateException("v can not be null");
         }
         return v.get();
     }
